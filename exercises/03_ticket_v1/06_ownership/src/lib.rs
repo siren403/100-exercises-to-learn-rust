@@ -34,16 +34,16 @@ impl Ticket {
         }
     }
 
-    pub fn title(self) -> String {
-        self.title
+    pub fn title(&self) -> &String {
+        &self.title
     }
 
-    pub fn description(self) -> String {
-        self.description
+    pub fn description(&self) -> &String {
+        &self.description
     }
 
-    pub fn status(self) -> String {
-        self.status
+    pub fn status(&self) -> &String {
+        &self.status
     }
 }
 
@@ -57,6 +57,8 @@ mod tests {
         // If you change the signatures as requested, this should compile:
         // we can call these methods one after the other because they borrow `self`
         // rather than taking ownership of it.
+        // ticket의 소유권이 fn title로 넘어가서 title() 이 후 소유권이 없어진 상태이기 때문에
+        // description(), status()를 호출할 수 없다. 따라서 소유권을 넘기지 않고 참조만 넘겨주면 된다.
         assert_eq!(ticket.title(), "A title");
         assert_eq!(ticket.description(), "A description");
         assert_eq!(ticket.status(), "To-Do");

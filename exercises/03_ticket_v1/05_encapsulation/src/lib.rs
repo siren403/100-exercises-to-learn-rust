@@ -35,6 +35,20 @@ pub mod ticket {
         //  - `description` that returns the `description` field.
         //  - `status` that returns the `status` field.
     }
+
+    impl Ticket {
+        pub fn title(&self) -> &str {
+            self.title.as_str()
+        }
+
+        pub fn description(&self) -> &str {
+            self.description.as_str()
+        }
+
+        pub fn status(&self) -> &str {
+            self.status.as_str()
+        }
+    }
 }
 
 #[cfg(test)]
